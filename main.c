@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 11:30:40 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/07 21:27:05 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 22:08:54 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,27 +123,34 @@ int			tic(t_list **ways)
 	return (ret);
 }
 
-void		mooove(t_list **ways, int max)
+int			mooove(t_list **ways, int max)
 {
 	t_list	*lst;
 	int		gbl;
+	int		nb_moves;
 
 	gbl = 0;
+	nb_moves = 0;
 	while (gbl < max)
+	{
 		gbl = tic(ways);
+		nb_moves++;
+	}
+	return (nb_moves);
 }
 
 static int	test_param(char c)
 {
-	return ((c == 'm') + ((c == 'f') << 1) + ((c == 'i') << 2) + ((c == 'c') << 3));
+	return ((c == 'm') + ((c == 'f') << 1) + ((c == 'i') << 2) + ((c == 'c') << 3) + ((c == 't') << 4));
 }
 
 static void	help_param(void)
 {
-	ft_printf("options :[-mfci]\n");
+	ft_printf("options : [-mfcti]\n");
 	ft_printf("-m : n'affiche pas les parametres de la carte\n");
 	ft_printf("-f : n'affiche pas le deplacement des fourmis\n");
 	ft_printf("-c : affiche le chemin utilise\n");
+	ft_printf("-t : affiche le nombre de tics\n");
 	ft_printf("-i : affiche le details de l'erreur\n");
 	exit(0);
 }
@@ -195,7 +202,9 @@ int			main(int ac, char **av)
 	ways = get_ways(e, get_nb_ways(e));
 	att_ants(ways, e->nb_ants);
 	aff_map(e->map);
-	mooove(ways, e->nb_ants);
+	i = mooove(ways, e->nb_ants);
+	if (e->param & 0x10)
+		ft_printf("%d tics");
 	i = 0;
 	if (e->param & 8)
 		ft_printf("chemin(s) utilise(s) :\n");

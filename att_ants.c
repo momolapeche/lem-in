@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 11:57:34 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/07 21:04:32 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 21:52:04 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void		transf(t_list *way)
 	way->content_size = 0;
 	while (way->next)
 		way = way->next;
-	ft_printf("%zi\n", way->content_size = tmp);
+	way->content_size = tmp;
 }
 
 void			att_ants(t_list **ways, int nb_ants)

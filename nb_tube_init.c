@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/31 13:41:37 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/04 18:54:23 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 21:54:49 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 static int		set_content_size(t_list *lst, size_t n)
 {
-	if ((!lst->content_size || lst->content_size > n) && lst->content_size != (size_t)-1)
+	if ((!lst->content_size || lst->content_size > n) &&
+			lst->content_size != (size_t)-1)
 	{
 		lst->content_size = n;
 		return (1);
