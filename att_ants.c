@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 11:57:34 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/07 14:37:27 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 21:04:32 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ static int		equalizer(t_list **ways, int nb_ants)
 		while (i < ways_tmp[0] && j < nb_ants)
 		{
 			if (ways_tmp[i])
+				ways_tmp[i]--;
+			else
 			{
 				ways[i - 1]->content_size++;
-				ways_tmp[i]--;
 				j++;
 			}
 			i++;
@@ -115,7 +116,6 @@ void			att_ants(t_list **ways, int nb_ants)
 	while (ways[i])
 	{
 		transf(ways[i]);
-		ft_printf("%zi\n", ways[i]->content_size);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 11:30:40 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/07 14:32:00 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 21:27:05 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,23 @@ static void	aff_map(t_list *lst)
 	}
 }
 
-void		aff(t_list *way, int max)
+int			get_max(t_list *lst)
+{
+	while (lst->next)
+		lst = lst->next;
+	return (lst->content_size);
+}
+
+int			aff(t_list *way, int tmp)
 {
 	t_list	*lst;
 	int		ant;
+	int		max;
 
-	way->content_size = 0;
+	max = get_max(way);
 	while (way->content_size != max)
 	{
-		ant = way->content_size + 1;
+		ant = tmp + way->content_size + 1;
 		lst = way;
 		while (lst->next)
 		{
@@ -80,6 +88,49 @@ void		aff(t_list *way, int max)
 		}
 		ft_putchar('\n');
 	}
+	return (way->content_size);
+}
+
+int			tic(t_list **ways)
+{
+	int			i;
+	int			ret;
+	unsigned	mem;
+	t_list		*lst;
+
+	i = 0;
+	mem = 1;
+	ret = 0;
+	while (ways[i])
+	{
+		ret += ways[i]->content_size;
+		mem += ways[i]->content_size;
+		lst = ways[i];
+		while (lst->next)
+		{
+			if (lst->next->content_size)
+			{
+				ft_printf("L%d-%s ", mem, lst->content);
+				mem += lst->next->content_size;
+				lst->content_size++;
+				lst->next->content_size--;
+			}
+			lst = lst->next;
+		}
+		i++;
+	}
+	write(1, "\n", 1);
+	return (ret);
+}
+
+void		mooove(t_list **ways, int max)
+{
+	t_list	*lst;
+	int		gbl;
+
+	gbl = 0;
+	while (gbl < max)
+		gbl = tic(ways);
 }
 
 static int	test_param(char c)
@@ -144,13 +195,7 @@ int			main(int ac, char **av)
 	ways = get_ways(e, get_nb_ways(e));
 	att_ants(ways, e->nb_ants);
 	aff_map(e->map);
-	i = 0;
-	while (ways[i])
-	{
-		if (!(e->param & 2))
-			aff(ways[i], e->nb_ants);
-		i++;
-	}
+	mooove(ways, e->nb_ants);
 	i = 0;
 	if (e->param & 8)
 		ft_printf("chemin(s) utilise(s) :\n");
