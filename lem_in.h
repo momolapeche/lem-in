@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 11:57:25 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/04 13:56:44 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 12:19:09 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_env			*get_info(t_env *e);
 void			nb_tube_init(t_env *e);
 void			set_tic(t_env *e);
 t_list			**get_ways(t_env *e, int max);
+void			att_ants(t_list **ways, int nb_ants);
 
 #endif

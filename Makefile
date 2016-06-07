@@ -6,7 +6,7 @@
 #    By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/16 11:16:50 by rmenegau          #+#    #+#              #
-#    Updated: 2016/06/02 19:21:06 by rmenegau         ###   ########.fr        #
+#    Updated: 2016/06/07 14:38:14 by rmenegau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC = main.c \
 	  get_rooms.c \
 	  get_tubes.c \
 	  nb_tube_init.c \
-	  algo.c
+	  algo.c \
+	  att_ants.c
 OBJ = $(SRC:.c=.o)
 LIBFT = ../libft
 FLAGS = -Wall -Wextra -Werror

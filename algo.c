@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 09:34:45 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/06 17:25:29 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:31:18 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static t_list	*get_way(t_env *e)
 	path = ft_lstnew(NULL, 0);
 	lst = e->ends[0];
 	path->content = lst->content;
-	path->content_size = e->nb_ants;
 	tmp = lst->content_size;
 	while (lst != e->ends[1] && lst)
 	{

@@ -6,7 +6,7 @@
 /*   By: rmenegau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 11:30:40 by rmenegau          #+#    #+#             */
-/*   Updated: 2016/06/06 17:23:44 by rmenegau         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:32:00 by rmenegau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ int			main(int ac, char **av)
 	e->param = ac > 1 ? get_param(ac, av, e) : 0;
 	get_info(e);
 	ways = get_ways(e, get_nb_ways(e));
+	att_ants(ways, e->nb_ants);
 	aff_map(e->map);
 	i = 0;
 	while (ways[i])
